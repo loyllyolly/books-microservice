@@ -1,0 +1,161 @@
+{
+  "info": {
+    "_postman_id": "c1f7a4e2-892b-4fa8-bcf9-5e9102431aa1",
+    "name": "Books Microservice (ЛБ 14)",
+    "description": "Коллекция запросов для проверки микросервиса каталога книг (ЛБ 14, Коровкин)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://51.250.4.226:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "1. POST - Создать книгу 1 (Война и мир)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Война и мир\",\n  \"author\": \"Лев Толстой\",\n  \"genre\": \"Роман-эпопея\",\n  \"publication_year\": 1869,\n  \"description\": \"Классическое произведение русской литературы.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books"]
+        }
+      }
+    },
+    {
+      "name": "2. POST - Создать книгу 2 (Мастер и Маргарита)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Мастер и Маргарита\",\n  \"author\": \"Михаил Булгаков\",\n  \"genre\": \"Фантастика / Роман\",\n  \"publication_year\": 1967,\n  \"description\": \"Загадочный роман о визите Воланда в Москву.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books"]
+        }
+      }
+    },
+    {
+      "name": "3. GET - Получить список всех книг",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books"]
+        }
+      }
+    },
+    {
+      "name": "4. GET - Получить книгу по ID (ID=1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books", "1"]
+        }
+      }
+    },
+    {
+      "name": "5. PUT - Обновить книгу (ID=1)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Война и мир (Юбилейное издание)\",\n  \"publication_year\": 1873\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books", "1"]
+        }
+      }
+    },
+    {
+      "name": "6. DELETE - Удалить книгу (ID=2)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books/2",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books", "2"]
+        }
+      }
+    },
+    {
+      "name": "7. Ошибка 422 - Некорректные данные (валидация)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"author\": \"Неизвестный\",\n  \"publication_year\": 9999\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books"]
+        }
+      }
+    },
+    {
+      "name": "8. Ошибка 404 - Запрос несуществующей книги (ID=999)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/books/999",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "books", "999"]
+        }
+      }
+    }
+  ]
+}
