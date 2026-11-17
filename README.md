@@ -25,7 +25,7 @@ RESTful микросервис каталога книг («Books Microservice»
 
 ### 1. Клонирование репозитория
 ```bash
-git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ>
+git clone https://github.com/loyllyolly/books-microservice.git
 cd books-microservice
 ```
 
